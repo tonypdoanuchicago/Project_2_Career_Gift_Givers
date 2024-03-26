@@ -6,12 +6,7 @@ const helpers = require('./utils/helpers');
 const { Sequelize } = require('sequelize');
 require('dotenv').config(); // Load environment variables from .env file
 
-// Create a Sequelize instance with database connection parameters from environment variables
-const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  dialect: 'postgres',
-});
+const sequelize = require('./config/connection'); // Import Sequelize instance from config/connection.js
 
 const app = express();
 const PORT = process.env.PORT || 3001;
