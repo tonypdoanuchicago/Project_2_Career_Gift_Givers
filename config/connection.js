@@ -1,23 +1,34 @@
+const Sequelize = require('sequelize');
+require('dotenv').config();
 
-const { Sequelize } = require('sequelize');
+let sequelize;
 
-// Define the connection string
-const connectionString = 'postgres://tutor_db_3c07_user:TUdJbM4A0bwjWUDNro8tTtBj32uDpyvN@dpg-co1dfn7jbltc7396en30-a/tutor_db_3c07';
-
-// Initialize Sequelize instance with the connection string
-const sequelize = new Sequelize(connectionString, {
-  dialect: 'postgres',
-  logging: false, // Disable logging SQL queries (optional)
-});
-
-// Test the connection
-sequelize.authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
+if (process.env.DB_URL) {
+  sequelize = new Sequelize(process.env.DB_URL, {
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false // For development purposes, remove it in production
+      }
+    }
   });
+} else {
+  sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USERNAME,
+    process.env.DB_PASSWORD,
+    {
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
+      dialect: 'postgres',
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false // For development purposes, remove it in production
+        }
+      }
+    }
+  );
+}
 
-// Export the Sequelize instance
 module.exports = sequelize;
