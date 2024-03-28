@@ -1,4 +1,4 @@
-# SVG Logo Generator      <a href = "https://opensource.org/licenses/MIT">![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)</a>
+# Career Gift Giver     <a href = "https://opensource.org/licenses/MIT">![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)</a>
 
   ## Description
 
@@ -47,3 +47,5 @@
 
   ## Walk-through video 
   
+Hosted on Render
+Link to Web Service on Render: https://project-2-career-gift-givers.onrender.com/
