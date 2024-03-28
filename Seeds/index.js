@@ -1,35 +1,42 @@
-const sequelize = require('../config/connection');
-const Tutor = require('../models/Tutor');
-const Skill = require('../models/Skill');
-const tutorData = require('./tutor-seeds.json');
-const skillData = require('./skill-seeds.json'); // Assuming you have seed data for skills
+const db = require('../models');
 
-const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
+const seed = async () => {
+  try {
+    await db.sequelize.sync({ force: true });
 
-  // Create tutors
-  const tutors = await Tutor.bulkCreate(tutorData, {
-    individualHooks: true,
-    returning: true,
-  });
+    await db.Skill.bulkCreate([
+      { name: 'JavaScript' },
+      { name: 'HTML' },
+      { name: 'CSS' },
+      { name: 'Backend' },
+      { name: 'Microservices' },
+      { name: 'Operating Systems' },
+      { name: 'Databases' },
+    ]);
 
-  // Create skills
-  await Skill.bulkCreate(skillData);
+    await db.Tutor.bulkCreate([
+      { tutor_name: 'John Doe', tutor_email: 'john@example.com', tutor_jobtitle: 'Software Engineer' },
+      { tutor_name: 'Jane Doe', tutor_email: 'jane@example.com', tutor_jobtitle: 'Web Developer' },
+      { tutor_name: 'Alice Smith', tutor_email: 'alice@example.com', tutor_jobtitle: 'Data Analyst' },
+      { tutor_name: 'Bob Johnson', tutor_email: 'bob@example.com', tutor_jobtitle: 'System Administrator' },
+      { tutor_name: 'Charlie Brown', tutor_email: 'charlie@example.com', tutor_jobtitle: 'Network Engineer' },
+      { tutor_name: 'Eve Wilson', tutor_email: 'eve@example.com', tutor_jobtitle: 'Database Administrator' },
+      { tutor_name: 'Grace Lee', tutor_email: 'grace@example.com', tutor_jobtitle: 'Full Stack Developer' },
+    ]);
 
-  // Associate tutors with skills
-  for (const tutor of tutors) {
-    // Assuming each tutor has a 'skillIds' property containing an array of skill IDs
-    for (const skillId of tutor.skillIds) {
-      const skill = await Skill.findByPk(skillId);
-      if (skill) {
-        await tutor.addSkill(skill);
-      }
+    const skills = await db.Skill.findAll();
+
+    const tutors = await db.Tutor.findAll();
+
+    for (const tutor of tutors) {
+      await tutor.addSkills(skills);
     }
+
+    console.log('Seeding completed successfully.'); // Add this line
+
+  } catch (error) {
+    console.error('Error seeding database:', error);
   }
-
-  console.log('Database seeded successfully.');
-
-  process.exit(0);
 };
 
-seedDatabase();
+seed();
