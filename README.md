@@ -1,7 +1,8 @@
-# SVG Logo Generator      <a href = "https://opensource.org/licenses/MIT">![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)</a>
+# Career Gift Giver     <a href = "https://opensource.org/licenses/MIT">![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)</a>
 
   ## Description
-
+  
+  Career Gift Givers - CGG: An E-commerce website that allows retired professionals to tutor for an affordable rate while achieving additional income after retirement and offering reasonably priced services to any student who wishes to gain from a Career Gift Giver. These retired professionals are looking to make some money to assist in their retirement expenses, but most importantly they want to give back to the community by sharing their knowledge and staying in tune with the next generation who will continue in their careers. Great for Tech, Engineering, and any other career!
  
   ## Table of Contents
 
@@ -25,7 +26,7 @@
 
   ## Usage <a id="usage"></a>
 
- 
+ User can schedule a tutoring session and checkout with payment! 
 
   ## License <a id="license"></a>
 
@@ -45,5 +46,11 @@
 
   GitHub: <a href="https://github.com/dpena1489"> dpena1489</a>
 
+  GitHub: <a href="https://github.com/tonypdoanuchicago"> tonydoanuchicago</a>
+
+  GtHub: <a href="https://github.com/mmiller1234321"> mmiller1234321</a>
+
   ## Walk-through video 
   
+Hosted on Render
+Link to Web Service on Render: https://project-2-career-gift-givers.onrender.com/
