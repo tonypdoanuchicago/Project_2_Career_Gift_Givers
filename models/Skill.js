@@ -1,12 +1,21 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-const Skill = sequelize.define('Skill', {
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+class Skill extends Model {}
+
+Skill.init(
+  {
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
   },
-});
+  {
+    sequelize,
+    timestamps: false,
+    modelName: 'skill',
+  }
+);
 
 module.exports = Skill;
