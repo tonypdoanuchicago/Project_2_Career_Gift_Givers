@@ -1,17 +1,17 @@
 {
-  "name": "book-lister",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
+    "name": "book-lister",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node server.js",
-      "seed": "node seeds/seed.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
+      "start": "babel-node --extensions .js,.jsx server.js",
+      "seed": "babel-node --extensions .js,.jsx seeds/seed.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
       "@popperjs/core": "^2.11.8",
       "bcrypt": "^5.0.0",
       "bootstrap": "^3.4.1",
@@ -22,11 +22,17 @@
       "express-handlebars": "^5.2.0",
       "express-session": "^1.17.1",
       "pg": "^8.11.3",
-      "sequelize": "^6.3.5"
-  },
-  "devDependencies": {
+      "sequelize": "^6.3.5",
+      "mysql2": "^2.3.0"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.16.0",
+      "@babel/node": "^7.16.0",
+      "@babel/preset-env": "^7.16.0",
+      "@babel/register": "^7.16.0",
       "eslint": "^7.12.1",
       "eslint-config-prettier": "^6.15.0",
       "prettier": "^2.1.2"
+    }
   }
-}
+  

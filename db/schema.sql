@@ -1,23 +1,11 @@
--- Define the tutors table
-CREATE TABLE tutors (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    job_title VARCHAR(100) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+-- Drop table if it exists (for development purposes)
+DROP TABLE IF EXISTS tutors;
 
--- Define the skills table
-CREATE TABLE skills (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
-);
-
--- Define the junction table for Tutor-Skill relationship
-CREATE TABLE tutor_skills (
-    id SERIAL PRIMARY KEY,
-    tutor_id INTEGER REFERENCES tutors(id),
-    skill_id INTEGER REFERENCES skills(id),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- Create tutors table
+CREATE TABLE IF NOT EXISTS tutors (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  job_title VARCHAR(100) NOT NULL,
+  skills VARCHAR(255) NOT NULL
 );

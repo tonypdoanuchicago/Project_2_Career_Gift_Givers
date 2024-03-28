@@ -1,5 +1,5 @@
 // Import necessary modules
-const { Tutor, Skill, sequelize } = require('./models/index');
+const { Tutor, Skill, sequelize } = require('../models/index'); // Adjust the import path here
 
 // Seed function to populate the database
 async function seed() {

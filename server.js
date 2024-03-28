@@ -12,9 +12,9 @@ const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ });
 
 const sess = {
-  secret: 'Very Secret',
+  secret: 'Super secret secret',
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24,
+    maxAge: 300000,
     httpOnly: true,
     secure: false,
     sameSite: 'strict',

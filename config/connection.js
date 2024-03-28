@@ -1,20 +1,23 @@
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
 
-// Load environment variables from .env file
-require('dotenv').config();
+const sequelize = new Sequelize(
+  process.env.DB_NAME || 'tutor_db_3c07',
+  process.env.DB_USERNAME || 'tutor_db_3c07_user',
+  process.env.DB_PASSWORD || 'TUdJbM4A0bwjWUDNro8tTtBj32uDpyvN',
+  {
+    host: process.env.DB_HOST || 'dpg-co1dfn7jbltc7396en30-a.ohio-postgres.render.com',
+    port: process.env.DB_PORT || 5432,
+    dialect: 'postgres'
+  }
+);
 
-// Connection details
-const database = process.env.DB_DATABASE || 'tutor_db_3c07';
-const username = process.env.DB_USERNAME || 'tutor_db_3c07_user';
-const password = process.env.DB_PASSWORD || 'TUdJbM4A0bwjWUDNro8tTtBj32uDpyvN'; // Replace 'YOUR_PASSWORD' with the actual password
-const host = process.env.DB_HOST || 'dpg-co1dfn7jbltc7396en30-a';
-const port = process.env.DB_PORT || 5432;
-
-// Create Sequelize instance
-const sequelize = new Sequelize(database, username, password, {
-  host: host,
-  port: port,
-  dialect: 'postgres', // Assuming you're using PostgreSQL
-});
+// Test the connection
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 module.exports = sequelize;

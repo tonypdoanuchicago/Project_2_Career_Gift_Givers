@@ -50,7 +50,7 @@ Tutor.init(
     sequelize, // Pass the initialized Sequelize instance
     timestamps: true, // Sequelize will manage createdAt and updatedAt fields
     underscored: true, // Use snake_case for column names
-    modelName: 'tutor', // Name of the model
+    modelName: 'Tutor', // Name of the model (singular form)
     tableName: 'tutors' // Name of the table in the database
   }
 );
