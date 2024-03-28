@@ -19,8 +19,7 @@ Skill.init(
   {
     sequelize,
     timestamps: false,
-    modelName: 'Skill',
-    tableName: 'skills'
+    modelName: 'Skill'
   }
 );
 
