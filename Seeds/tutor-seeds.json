@@ -1,0 +1,44 @@
+[
+  {
+    "Tutor_name": "Jack Tripper",
+    "Tutor_email": "jack@example.com",
+    "Tutor_jobtitle": "Full Stack Development",
+    "SkillIds": [1, 2]
+  },
+  {
+    "Tutor_name": "Janet Wood",
+    "Tutor_email": "janet@example.com",
+    "Tutor_jobtitle": "UI/UX Design",
+    "SkillIds": [3, 4]
+  },
+  {
+    "Tutor_name": "Chrissy Snow",
+    "Tutor_email": "chrissy@example.com",
+    "Tutor_jobtitle": "Frontend Development",
+    "SkillIds": [1, 5]
+  },
+  {
+    "Tutor_name": "Larry Dallas",
+    "Tutor_email": "larry@example.com",
+    "Tutor_jobtitle": "Backend Development",
+    "SkillIds": [2, 6]
+  },
+  {
+    "Tutor_name": "Mr. Roper",
+    "Tutor_email": "roper@example.com",
+    "Tutor_jobtitle": "Software Engineering",
+    "SkillIds": [5, 7]
+  },
+  {
+    "Tutor_name": "Mrs. Roper",
+    "Tutor_email": "mrsroper@example.com",
+    "Tutor_jobtitle": "Database Management",
+    "SkillIds": [4, 6]
+  },
+  {
+    "Tutor_name": "Terri Alden",
+    "Tutor_email": "terri@example.com",
+    "Tutor_jobtitle": "DevOps",
+    "SkillIds": [7, 3]
+  }
+]
