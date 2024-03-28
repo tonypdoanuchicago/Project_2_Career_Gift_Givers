@@ -8,14 +8,14 @@ if (process.env.DB_URL) {
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized: false // For development purposes, remove it in production
+        rejectUnauthorized: false // This line is for development purposes, remove it in production
       }
     }
   });
 } else {
   sequelize = new Sequelize(
     process.env.DB_NAME,
-    process.env.DB_USERNAME,
+    process.env.DB_USER,
     process.env.DB_PASSWORD,
     {
       host: process.env.DB_HOST,
@@ -24,7 +24,7 @@ if (process.env.DB_URL) {
       dialectOptions: {
         ssl: {
           require: true,
-          rejectUnauthorized: false // For development purposes, remove it in production
+          rejectUnauthorized: false // This line is for development purposes, remove it in production
         }
       }
     }
