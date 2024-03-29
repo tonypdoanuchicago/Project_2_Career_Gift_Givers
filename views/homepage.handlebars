@@ -45,6 +45,31 @@
             margin: 0; /* Remove default margin */
             font-weight: bold; /* Bold font */
         }
+    
+        /* Style for skill div */
+        .skill {
+            padding: 20px;
+            margin: 10px;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Additional styles for desktop */
+        @media screen and (min-width: 768px) {
+            .skill {
+                width: 300px;
+                height: 200px;
+            }
+        }
+
+        /* Additional styles for mobile */
+        @media screen and (max-width: 767px) {
+            .skill {
+                width: calc(100% - 20px);
+            }
+        }
     </style>
 </head>
 <body>
@@ -55,39 +80,15 @@
 <br/>
 <br/>
 <br/>
-<div class="container">
-    <div class="row justify-content-center">
-        <!-- Red -->
-        <div class="card col-sm-3" style="background-color: #FF0000;" onclick="goToProfiles()">
-            <div class="label">JavaScript</div>
-        </div>
-        <!-- Orange -->
-        <div class="card col-sm-3" style="background-color: #FFA500;" onclick="goToProfiles()">
-            <div class="label">HTML</div>
-        </div>
-        <!-- Yellow -->
-        <div class="card col-sm-3" style="background-color: #FFFF00;" onclick="goToProfiles()">
-            <div class="label">CSS</div>
-        </div>
-        <!-- Green -->
-        <div class="card col-sm-3" style="background-color: #008000;" onclick="goToProfiles()">
-            <div class="label">Backend</div>
-        </div>
-        <!-- Blue -->
-        <div class="card col-sm-3" style="background-color: #0000FF;" onclick="goToProfiles()">
-            <div class="label">Microservices</div>
-        </div>
-        <!-- Indigo -->
-        <div class="card col-sm-3" style="background-color: #4B0082;" onclick="goToProfiles()">
-            <div class="label">Operating Systems</div>
-        </div>
-        <!-- Violet -->
-        <div class="card col-sm-3" style="background-color: #EE82EE;" onclick="goToProfiles()">
-            <div class="label">Databases</div>
-        </div>
-        <!-- Other colors can be added similarly -->
+
+{{!-- Render each skill details using the skill-details partial --}}
+{{#each skills}}
+    <div class="skill" style="background-color: #28a745;" onclick="goToProfiles();">
+        <h3>{{name}}</h3>
+        <p>{{description}}</p>
+        <!-- Add more details as needed -->
     </div>
-</div>
+{{/each}}
 
 </body>
 </html>
