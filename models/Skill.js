@@ -10,6 +10,11 @@ Skill.init(
       allowNull: false,
       unique: true,
     },
+    color: {
+      type: DataTypes.STRING,
+      allowNull: false,
+  
+    }
   },
   {
     sequelize,
