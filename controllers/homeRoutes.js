@@ -12,10 +12,10 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
-// router.get("/:skillname", async(req,res)=>{
-//     console.log(req.params.skillname)
-// })
-// Use withAuth middleware to prevent access to route
+router.get("/:skillname", async(req,res)=>{
+    console.log(req.params.skillname)
+})
+//Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
     try {
         // Find the logged in user based on the session ID
