@@ -1,4 +1,4 @@
-# Career Gift Giver     <a href = "https://opensource.org/licenses/MIT">![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)</a>
+# Career Gift Givers CGG    <a href = "https://opensource.org/licenses/MIT">![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)</a>
 
   ## Description
   
@@ -22,11 +22,11 @@
 
   ## Installation <a id="installation"></a>
 
-  To use this application, install node.js and the Inquirer package. To test this application, install Jest.
+  To use this application, install node.js and the Inquirer package. To test this application, install Jest. Need to run Postgres to connect to database,
 
   ## Usage <a id="usage"></a>
 
- User can schedule a tutoring session and checkout with payment! 
+ User can schedule a tutoring session and checkout with payment! You may click on one of the many options and checkout our skilled Gigt Givers! Book as many sessions as you want. Lern or advance in a skill. 
 
   ## License <a id="license"></a>
 
@@ -37,7 +37,7 @@
   N/A
 
   ## Tests <a id="tests"></a>
-
+N/A
 
 
   ## Questions <a id="questions"></a>
