@@ -1,0 +1,30 @@
+[
+    {
+        "name": "HTML",
+        "color":"#FFA500"
+    },
+    {
+        "name": "CSS",
+        "color":"#FFFF00"
+    },
+    {
+        "name": "JavaScript",
+        "color":"#FF0000"
+    },
+    {
+        "name": "Backend",
+        "color":"#008000"
+    },
+    {
+        "name": "Microservices",
+        "color":"#0000FF"
+    },
+    {
+        "name": "Operating Systems",
+        "color":"#4B0082"
+    },
+    {
+        "name": "Database",
+        "color":"#EE82EE"
+    }
+]

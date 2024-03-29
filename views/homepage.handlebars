@@ -1,8 +1,14 @@
 {{!-- Render each skill details using the skill-details partial --}}
-{{#each skills}}
-  <div class="skill">
-    <h3>{{name}}</h3>
-    <p>{{description}}</p>
+{{#each skills as |skill|}}
+  <div class="skill" style = "background-color:{{skill.color}}">
+    <h3>{{skill.name}}</h3>
+  {{!-- <button type="button" href="./{{skill.name}}">
+    click
+  </button> --}}
     <!-- Add more details as needed -->
   </div>
 {{/each}}
+
+<script>
+  
+</script>
