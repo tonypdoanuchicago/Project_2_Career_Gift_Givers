@@ -1,5 +1,7 @@
+{{!--
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,6 +23,7 @@
             cursor: pointer;
             overflow: hidden;
         }
+
         /* Style for label */
         .label {
             position: relative;
@@ -34,18 +37,25 @@
         }
 
         .banner {
-            background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3); /* Rainbow colors */
-            color: white; /* Text color */
-            text-align: center; /* Center align text */
-            padding: 50px 0; /* Add some padding for better visibility */
+            background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+            /* Rainbow colors */
+            color: white;
+            /* Text color */
+            text-align: center;
+            /* Center align text */
+            padding: 50px 0;
+            /* Add some padding for better visibility */
         }
 
         .banner h1 {
-            font-size: 3em; /* Large font size */
-            margin: 0; /* Remove default margin */
-            font-weight: bold; /* Bold font */
+            font-size: 3em;
+            /* Large font size */
+            margin: 0;
+            /* Remove default margin */
+            font-weight: bold;
+            /* Bold font */
         }
-    
+
         /* Style for skill div */
         .skill {
             padding: 20px;
@@ -72,14 +82,28 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="banner">
-    <h1>Career Gift Givers</h1>
-</div>
-<br/>
-<br/>
-<br/>
+    <div class="banner">
+        <h1>Career Gift Givers</h1>
+    </div> --}}
 
-{{!-- Render each skill details using the skill-details partial --}}
 
+    <div class="row">
+
+        {{#each skills as |skill|}}
+        <div class="skill" style="background-color:{{skill.color}}">
+            <h3>{{skill.name}}</h3>
+            <a href="/skills/{{skill.id}}">
+                <button type="button">
+                    click
+                </button>
+            </a>
+
+            <!-- Add more details as needed -->
+        </div>
+        {{/each}}
+    </div>
+
+    {{!-- Render each skill details using the skill-details partial --}}

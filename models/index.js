@@ -1,15 +1,19 @@
 const Tutor = require('./tutor')
 const Skill = require('./Skill')
 const User = require('./User')
+const TutorSkill =  require('./TutorSkill')
 
-User.hasMany(Skill, {
-    foreignKey: 'user_id',
+Tutor.belongsToMany(Skill, {
+    foreignKey: 'tutor_id',
+    through: TutorSkill,
     onDelete: 'CASCADE'
 });
-Skill.belongsTo(User, {
-    foreignKey: 'user_id',
+
+Skill.belongsToMany(Tutor, {
+    foreignKey: 'skill_id',
+    through: TutorSkill,
     onDelete: 'CASCADE'
 })
 
-module.exports = { Tutor, Skill, User}
+module.exports = { Tutor, Skill, User, TutorSkill}
 

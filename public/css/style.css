@@ -162,4 +162,71 @@
     align-content: flex-start;
     align-items: center;
   }
+
+  /* Style for card views */
+  .card {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* Style for label */
+.label {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.banner {
+    background: linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+    /* Rainbow colors */
+    color: white;
+    /* Text color */
+    text-align: center;
+    /* Center align text */
+    padding: 50px 0;
+    /* Add some padding for better visibility */
+}
+
+.banner h1 {
+    font-size: 3em;
+    /* Large font size */
+    margin: 0;
+    /* Remove default margin */
+    font-weight: bold;
+    /* Bold font */
+}
+
+/* Style for skill div */
+.skill {
+    padding: 20px;
+    margin: 10px;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+
+/* Additional styles for desktop */
+@media screen and (min-width: 768px) {
+    .skill {
+        width: 300px;
+        height: 200px;
+    }
+}
+
+/* Additional styles for mobile */
+@media screen and (max-width: 767px) {
+    .skill {
+        width: calc(100% - 20px);
+    }
+}
   

@@ -1,21 +1,45 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth')
-const {Skill,User} = require('../models')
+const { Skill, User, Tutor, TutorSkill } = require('../models');
+
+
 router.get('/', async (req, res) => {
     try {
-        const skillData = await Skill.findAll({include:[User]})
-        const skills = skillData.map((post)=> post.get({plain: true}))
+        const skillData = await Skill.findAll()
+        const skills = skillData.map((post) => post.get({ plain: true }))
+        console.log(skills);
         res.render('homepage', {
-   skills
+            skills
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
-router.get("/:skillname", async(req,res)=>{
-    console.log(req.params.skillname)
+
+router.get("/skills/:skillname", async (req, res) => {
+    try {
+        const tutorData = await Skill.findAll({
+            where: {
+                id: req.params.skillname
+            },
+            include:  [{
+                model: Tutor, 
+                through: TutorSkill
+            }]
+        })
+        console.log(tutorData)
+
+
+    res.render('newPage')
+    } catch (err) {
+        res.status(500).json(err);
+    }
+   
 })
-//Use withAuth middleware to prevent access to route
+
+
+
+// //Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
     try {
         // Find the logged in user based on the session ID
