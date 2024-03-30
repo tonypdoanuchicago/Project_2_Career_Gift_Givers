@@ -1,9 +1,11 @@
 const sequelize = require('../config/connection');
-const {Tutor,Skill,User} = require('../models');
+const { Tutor, Skill, User } = require('../models');
 
 const tutorData = require('./tutor-seeds.json');
 const skillData = require('./skills.json'); // Assuming you have seed data for skills
-const userData = require('./userData.json')
+const userData = require('./userData.json');
+const tutorSkillData = require('./TS-seeds')
+
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
@@ -19,24 +21,17 @@ const seedDatabase = async () => {
   });
 
   // Create skills
-for(const skill of skillData){
+  for (const skill of skillData) {
 
-  await Skill.create({
-    ...skill,
-    user_id: users[Math.floor(Math.random() * users.length)].id,
+    await Skill.create({
+      ...skill,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
 
-  })
-}
-  // // Associate tutors with skills
-  // for (const tutor of tutors) {
-  //   // Assuming each tutor has a 'skillIds' property containing an array of skill IDs
-  //   for (const skillId of tutor.skillIds) {
-  //     const skill = await Skill.findByPk(skillId);
-  //     if (skill) {
-  //       await tutor.addSkill(skill);
-  //     }
-  //   }
-  // }
+    })
+  }
+
+
+  await tutorSkillData();
 
   console.log('Database seeded successfully.');
 
