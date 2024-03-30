@@ -27,10 +27,17 @@ router.get("/skills/:skillname", async (req, res) => {
                 through: TutorSkill
             }]
         })
-        console.log(tutorData)
+
+        const tutors = tutorData.map((tutor)=> tutor.get({plain: true}))
+
+        const tutorArray = tutors[0].tutors
+        console.log(tutors[0].name)
 
 
-    res.render('newPage')
+    res.render('newPage', {
+        tutorArray,
+skillName: tutors[0].name
+    })
     } catch (err) {
         res.status(500).json(err);
     }
