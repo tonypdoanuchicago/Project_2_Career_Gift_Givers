@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Management</title>
+</head>
+<body>
+
+<h2>List of Skills</h2>
+
+{{#each skills}}
+<div class="skill-item">
+    <span>{{name}} - <span style="background-color: {{color}}; color: white; padding: 2px 5px; border-radius: 5px;">{{color}}</span></span>
+    <button onclick="deleteSkill('{{id}}')">Delete</button>
+    <button onclick="updateSkill('{{id}}')">Update</button>
+</div>
+{{/each}}
+
+<h2>Add or Update Skill</h2>
+
+<form id="skillForm">
+    <label for="skillName">Name:</label><br>
+    <input type="text" id="skillName" name="skillName" required><br><br>
+    
+    <label for="skillColor">Color:</label><br>
+    <input type="color" id="skillColor" name="skillColor" required><br><br>
+    
+    <button type="button" onclick="addOrUpdateSkill()">Add/Update</button>
+</form>
+
+<script>
+    function deleteSkill(skillId) {
+        // Perform HTTP DELETE request to API route
+        fetch(`https://example.com/api/skills/${skillId}`, {
+            method: "DELETE"
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            console.log("Skill deleted successfully");
+            // Optionally remove the deleted skill from the UI
+        })
+        .catch(error => {
+            console.error("Error deleting skill:", error);
+            // Optionally display an error message to the user
+        });
+    }
+
+    function updateSkill(skillId) {
+        // Redirect to update page or modal with pre-filled form using skillId
+        console.log("Updating skill with ID:", skillId);
+    }
+
+    function addOrUpdateSkill() {
+        var skillName = document.getElementById("skillName").value;
+        var skillColor = document.getElementById("skillColor").value;
+
+        var data = {
+            name: skillName,
+            color: skillColor
+        };
+
+        // Perform HTTP PUT request to API route
+        fetch("https://example.com/api/skills", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(json => {
+            console.log("Skill added/updated successfully:", json);
+            // Optionally clear the form or update the UI with the new/updated skill
+        })
+        .catch(error => {
+            console.error("Error adding/updating skill:", error);
+            // Optionally display an error message to the user
+        });
+    }
+</script>
+
+</body>
+</html>

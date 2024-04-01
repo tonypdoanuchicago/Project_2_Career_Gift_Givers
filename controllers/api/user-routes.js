@@ -1,6 +1,21 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+router.get('/', async (req, res) => {
+  // find all skills
+  try {
+    const data = await User.findAll({
+      include: [{ all: true, nested: true }],
+    });
+    
+    const users = data.map((item) => item.get({plain: true}))
+
+    res.render('manage_users', users)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
