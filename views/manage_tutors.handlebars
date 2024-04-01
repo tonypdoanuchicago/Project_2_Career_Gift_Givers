@@ -9,21 +9,26 @@
 
 <h2>Tutor Information</h2>
 
+{{#each tutors}}
+<div class="tutor-item">
+    <span>Name: {{Tutor_name}}</span><br>
+    <span>Email: {{Tutor_email}}</span><br>
+    <span>Job Title: {{Tutor_jobtitle}}</span><br>
+    <button onclick="deleteTutor('{{id}}')">Delete</button>
+</div>
+{{/each}}
+
+<h2>Add New Tutor</h2>
+
 <form id="tutorForm">
     <label for="tutorName">Tutor Name:</label><br>
-    <input type="text" id="tutorName" name="tutorName" value="{{tutor.Tutor_name}}" required><br><br>
+    <input type="text" id="tutorName" name="tutorName" required><br><br>
     
     <label for="tutorEmail">Tutor Email:</label><br>
-    <input type="email" id="tutorEmail" name="tutorEmail" value="{{tutor.Tutor_email}}" required><br><br>
+    <input type="email" id="tutorEmail" name="tutorEmail" required><br><br>
     
     <label for="tutorJobTitle">Tutor Job Title:</label><br>
-    <input type="text" id="tutorJobTitle" name="tutorJobTitle" value="{{tutor.Tutor_jobtitle}}" required><br><br>
-    
-    <h2>Tutor's Skills</h2>
-    {{#each skills}}
-        <input type="checkbox" id="{{this.name}}" name="skills" value="{{this.name}}" {{#if isSelected ../selectedSkills this.name}} checked {{/if}}>
-        <label for="{{this.name}}">{{this.name}}</label><br>
-    {{/each}}
+    <input type="text" id="tutorJobTitle" name="tutorJobTitle" required><br><br>
     
     <br><br>
     <button type="submit">Submit</button>
@@ -33,29 +38,18 @@
     document.getElementById("tutorForm").addEventListener("submit", function(event) {
         event.preventDefault(); // Prevent the default form submission
         
-        var tutorName = document.getElementById("tutorName").value;
-        var tutorEmail = document.getElementById("tutorEmail").value;
-        var tutorJobTitle = document.getElementById("tutorJobTitle").value;
-        
-        var selectedSkills = [];
-        var skillCheckboxes = document.getElementsByName("skills");
-        for (var i = 0; i < skillCheckboxes.length; i++) {
-            if (skillCheckboxes[i].checked) {
-                selectedSkills.push(skillCheckboxes[i].value);
-            }
-        }
+        var tutorNameValue = document.getElementById("tutorName").value;
+        var tutorEmailValue = document.getElementById("tutorEmail").value;
+        var tutorJobTitleValue = document.getElementById("tutorJobTitle").value;
         
         var data = {
-            tutor: {
-                Tutor_name: tutorName,
-                Tutor_email: tutorEmail,
-                Tutor_jobtitle: tutorJobTitle
-            },
-            skills: selectedSkills
+            Tutor_name: tutorNameValue,
+            Tutor_email: tutorEmailValue,
+            Tutor_jobtitle: tutorJobTitleValue
         };
         
         // Perform HTTP POST request to API route
-        fetch("https://example.com/api/tutor", {
+        fetch("/api/tutor", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -78,10 +72,24 @@
         });
     });
     
-    // Helper function to check if a skill is selected
-    Handlebars.registerHelper("isSelected", function(selectedSkills, skillName) {
-        return selectedSkills.includes(skillName);
-    });
+    // Function to delete a tutor
+    function deleteTutor(tutorId) {
+        // Perform HTTP DELETE request to API route
+        fetch(`/api/tutor/${tutorId}`, {
+            method: "DELETE"
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            console.log("Tutor deleted successfully");
+            // Optionally remove the deleted tutor from the UI
+        })
+        .catch(error => {
+            console.error("Error deleting tutor:", error);
+            // Optionally display an error message to the user
+        });
+    }
 </script>
 
 </body>

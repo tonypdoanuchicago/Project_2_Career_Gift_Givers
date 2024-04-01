@@ -13,7 +13,6 @@
 <div class="skill-item">
     <span>{{name}} - <span style="background-color: {{color}}; color: white; padding: 2px 5px; border-radius: 5px;">{{color}}</span></span>
     <button onclick="deleteSkill('{{id}}')">Delete</button>
-    <button onclick="updateSkill('{{id}}')">Update</button>
 </div>
 {{/each}}
 
@@ -26,13 +25,13 @@
     <label for="skillColor">Color:</label><br>
     <input type="color" id="skillColor" name="skillColor" required><br><br>
     
-    <button type="button" onclick="addOrUpdateSkill()">Add/Update</button>
+    <button type="button" onclick="addOrUpdateSkill()">Add</button>
 </form>
 
 <script>
     function deleteSkill(skillId) {
         // Perform HTTP DELETE request to API route
-        fetch(`https://example.com/api/skills/${skillId}`, {
+        fetch(`/api/skill/${skillId}`, {
             method: "DELETE"
         })
         .then(response => {
@@ -63,8 +62,8 @@
         };
 
         // Perform HTTP PUT request to API route
-        fetch("https://example.com/api/skills", {
-            method: "PUT",
+        fetch("/api/skill", {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
