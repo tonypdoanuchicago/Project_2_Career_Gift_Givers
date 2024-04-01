@@ -12,7 +12,9 @@ router.get('/', async (req, res) => {
       
       const skills = data.map((item) => item.get({plain: true}))
 
-      res.render('manage_skills', skills)
+      console.log({skills});
+
+      res.render('manage_skills', {skills});
     } catch (err) {
       res.status(500).json(err);
     }
@@ -46,7 +48,7 @@ router.get('/', async (req, res) => {
 
   router.put('/:id', async (req, res) => {
     // update a Skill by its `id` value
-    Tutor.update(
+    Skill.update(
       {
         name: req.body.name,
         color: req.body.color
@@ -59,7 +61,7 @@ router.get('/', async (req, res) => {
     )
       .then((updatedSkill) => {
         // Sends the updated book as a json response
-        res.json(updatedSkill;
+        res.json(updatedSkill);
       })
       .catch((err) => res.json(err));
   });
@@ -67,14 +69,14 @@ router.get('/', async (req, res) => {
   router.delete('/:id', async (req, res) => {
     // delete a Tutor by its `id` value
     try {
-      const readerData = await Tutor.destroy({
+      const readerData = await Skill.destroy({
         where: {
           id: req.params.id,
         },
       });
   
       if (!readerData) {
-        res.status(404).json({ message: 'No Tutor found with that id!' });
+        res.status(404).json({ message: 'No Skill found with that id!' });
         return;
       }
   
